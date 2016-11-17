@@ -21,7 +21,18 @@ public class MainActivity extends AppCompatActivity {
         num2 = (EditText)findViewById(R.id.num2);
 
         sum();
+        sub();
 
+    }
+
+    private void sub() {
+        sub = (Button)findViewById(R.id.sub);
+        sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),Integer.parseInt(num1.getText().toString())-Integer.parseInt(num2.getText().toString())+"",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void sum() {
