@@ -66,6 +66,15 @@
             android:layout_height="wrap_content"
             android:id="@+id/div"
             android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:text="계산 결과 : "
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/result"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="30sp" />
+
     </LinearLayout>
 
 </RelativeLayout>
