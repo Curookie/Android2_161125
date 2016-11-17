@@ -23,7 +23,19 @@ public class MainActivity extends AppCompatActivity {
         sum();
         sub();
         mul();
+        div();
 
+    }
+
+    private void div() {
+        div = (Button)findViewById(R.id.div);
+        div.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(Integer.parseInt(num1.getText().toString())==0) Toast.makeText(getApplicationContext(),"0",Toast.LENGTH_SHORT).show();
+                else Toast.makeText(getApplicationContext(),String.format("%.2f",Double.parseDouble(num1.getText().toString())/Double.parseDouble(num2.getText().toString()))+"",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void mul() {
