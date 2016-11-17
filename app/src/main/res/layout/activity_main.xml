@@ -10,8 +10,62 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.curookie.calculator.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/num1"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/num2"
+            android:layout_below="@+id/num1"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:text="더하기"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/num2"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="43dp"
+            android:id="@+id/sum"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:text="빼기"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/sub"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:text="곱하기"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/mul"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:text="나누기"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/div"
+            android:layout_marginBottom="16dp" />
+    </LinearLayout>
+
 </RelativeLayout>
