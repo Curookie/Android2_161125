@@ -22,7 +22,18 @@ public class MainActivity extends AppCompatActivity {
 
         sum();
         sub();
+        mul();
 
+    }
+
+    private void mul() {
+        mul = (Button)findViewById(R.id.mul);
+        mul.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),Integer.parseInt(num1.getText().toString())*Integer.parseInt(num2.getText().toString())+"",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void sub() {
