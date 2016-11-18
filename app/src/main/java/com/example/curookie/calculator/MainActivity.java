@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
 
-        if(!num1.getText().toString().matches("^[+-]?\\d*(\\.?\\d*)$")||!num2.getText().toString().matches("^[+-]?\\d*(\\.?\\d*)$")) { Toast.makeText(getApplicationContext(),"값을 입력해주세요.",Toast.LENGTH_SHORT).show(); return; }
+        if(!num1.getText().toString().matches("^[+-]?\\d+(\\.?\\d*)$")||!num2.getText().toString().matches("^[+-]?\\d+(\\.?\\d*)$")) { Toast.makeText(getApplicationContext(),"값을 입력해주세요.",Toast.LENGTH_SHORT).show(); return; }
         double number1 = Double.parseDouble(num1.getText().toString());
         double number2 = Double.parseDouble(num2.getText().toString());
         double dresult = 0;
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else if(view.getId()==R.id.mul) dresult=number1*number2;
 
         else if(view.getId()==R.id.div) {
-            if(Integer.parseInt(num1.getText().toString())==0) { Toast.makeText(getApplicationContext(),"0",Toast.LENGTH_SHORT).show(); result.setText("계산 결과 : 0"); return; }
+            if(Double.parseDouble(num1.getText().toString())==0.0) { Toast.makeText(getApplicationContext(),"0",Toast.LENGTH_SHORT).show(); result.setText("계산 결과 : 0"); return; }
             dresult=number1/number2;
         }
 
