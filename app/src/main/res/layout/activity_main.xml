@@ -18,7 +18,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number"
+            android:inputType="number|numberSigned|numberDecimal"
             android:ems="10"
             android:id="@+id/num1"
             android:layout_alignParentTop="true"
@@ -28,7 +28,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number"
+            android:inputType="number|numberSigned|numberDecimal"
             android:ems="10"
             android:id="@+id/num2"
             android:layout_below="@+id/num1"
@@ -65,6 +65,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/div"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:text="나머지 값"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/mod"
             android:layout_marginBottom="16dp" />
 
         <TextView

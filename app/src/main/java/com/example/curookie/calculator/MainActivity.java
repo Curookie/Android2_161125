@@ -8,16 +8,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView result;
     EditText num1,num2;
-    Button sum,sub,mul,div;
+    Button sum,sub,mul,div,mod;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle("초간단 계산기(수정)");
 
         result = (TextView)findViewById(R.id.result);
         num1 = (EditText)findViewById(R.id.num1);
@@ -27,60 +28,57 @@ public class MainActivity extends AppCompatActivity {
         sub();
         mul();
         div();
+        mod();
 
     }
 
     private void div() {
         div = (Button)findViewById(R.id.div);
-        div.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String r;
-                if(!num1.getText().toString().matches("^[0-9]+$")||!num2.getText().toString().matches("^[0-9]+$")) { Toast.makeText(getApplicationContext(),"값을 입력해주세요.",Toast.LENGTH_SHORT).show(); return; }
-                if(Integer.parseInt(num1.getText().toString())==0) Toast.makeText(getApplicationContext(),r="0",Toast.LENGTH_SHORT).show();
-                else Toast.makeText(getApplicationContext(),r=String.format("%.2f",Double.parseDouble(num1.getText().toString())/Double.parseDouble(num2.getText().toString())),Toast.LENGTH_SHORT).show();
-                result.setText("계산 결과 : "+r);
-            }
-        });
+        div.setOnClickListener(this);
     }
 
     private void mul() {
         mul = (Button)findViewById(R.id.mul);
-        mul.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String r;
-                if(!num1.getText().toString().matches("^[0-9]+$")||!num2.getText().toString().matches("^[0-9]+$")) { Toast.makeText(getApplicationContext(),"값을 입력해주세요.",Toast.LENGTH_SHORT).show(); return; }
-                Toast.makeText(getApplicationContext(),r=(Integer.parseInt(num1.getText().toString())*Integer.parseInt(num2.getText().toString())+""),Toast.LENGTH_SHORT).show();
-                result.setText("계산 결과 : "+r);
-            }
-        });
+        mul.setOnClickListener(this);
     }
 
     private void sub() {
         sub = (Button)findViewById(R.id.sub);
-        sub.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String r;
-                if(!num1.getText().toString().matches("^[0-9]+$")||!num2.getText().toString().matches("^[0-9]+$")) { Toast.makeText(getApplicationContext(),"값을 입력해주세요.",Toast.LENGTH_SHORT).show(); return; }
-                Toast.makeText(getApplicationContext(),r=(Integer.parseInt(num1.getText().toString())-Integer.parseInt(num2.getText().toString())+""),Toast.LENGTH_SHORT).show();
-                result.setText("계산 결과 : "+r);
-            }
-        });
+        sub.setOnClickListener(this);
     }
 
     private void sum() {
         sum = (Button)findViewById(R.id.sum);
-        sum.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String r;
-                if(!num1.getText().toString().matches("^[0-9]+$")||!num2.getText().toString().matches("^[0-9]+$")) { Toast.makeText(getApplicationContext(),"값을 입력해주세요.",Toast.LENGTH_SHORT).show(); return; }
-                Toast.makeText(getApplicationContext(),r=(Integer.parseInt(num1.getText().toString())+Integer.parseInt(num2.getText().toString())+""),Toast.LENGTH_SHORT).show();
-                result.setText("계산 결과 : "+r);
-            }
-        });
+        sum.setOnClickListener(this);
     }
 
+    private void mod() {
+        mod = (Button)findViewById(R.id.mod);
+        mod.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+
+        if(!num1.getText().toString().matches("^[+-]?\\d*(\\.?\\d*)$")||!num2.getText().toString().matches("^[+-]?\\d*(\\.?\\d*)$")) { Toast.makeText(getApplicationContext(),"값을 입력해주세요.",Toast.LENGTH_SHORT).show(); return; }
+        double number1 = Double.parseDouble(num1.getText().toString());
+        double number2 = Double.parseDouble(num2.getText().toString());
+        double dresult = 0;
+
+        if(view.getId()==R.id.sum) dresult=number1+number2;
+
+        else if(view.getId()==R.id.sub) dresult=number1-number2;
+
+        else if(view.getId()==R.id.mul) dresult=number1*number2;
+
+        else if(view.getId()==R.id.div) {
+            if(Integer.parseInt(num1.getText().toString())==0) { Toast.makeText(getApplicationContext(),"0",Toast.LENGTH_SHORT).show(); result.setText("계산 결과 : 0"); return; }
+            dresult=number1/number2;
+        }
+
+        else if(view.getId()==R.id.mod) dresult=number1%number2;
+
+        Toast.makeText(getApplicationContext(),String.format("%.2f",dresult),Toast.LENGTH_SHORT).show();
+        result.setText("계산 결과 : "+   String.format("%.2f",dresult));
+    }
 }
